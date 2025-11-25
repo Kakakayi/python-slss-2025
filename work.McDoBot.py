@@ -13,7 +13,7 @@
 n = input("Would you like fries with your meal?")
 if n.lower().strip("!. ,") == "yes":
     print("Here's your meal with fries.")
-elif n.lower() == "no":
+elif n.lower().strip("!. ,") == "no":
     print("Here's your mean without fries!")
 else:
     print(f"I don't understand {n}")

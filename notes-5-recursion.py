@@ -1,7 +1,7 @@
 import turtle
 
 wn = turtle.Screen()
-wn.bgcolor("lightblue")
+wn.bgcolor("#7699D4")
 
 k = turtle.Turtle()
 k.left(90)
@@ -12,7 +12,13 @@ k.width(10)
 
 k.shape("arrow")  # leaf shapek
 k.pendown()
-k.left(90)
+
+LEAF_COLOURS = {
+    "Spring": "#FFC2DD",
+    "Summer": "#A0CFA9",
+    "Autumn": "#F4D07B",
+    "Winter": "#AAC6DA",
+}
 
 
 def drawAtree(level: int, branchLength: float):
@@ -37,7 +43,7 @@ def drawAtree(level: int, branchLength: float):
         k.backward(branchLength)
     else:
         # create a leaf
-        k.color("green")
+        k.color(LEAF_COLOURS["Autumn"])
         k.stamp()
         k.color("brown")
 
@@ -64,17 +70,30 @@ def draw_complicated_tree(level: int, branch_length: float):
 
     else:
         # create a leaf
-        k.color("green")
+        k.color(LEAF_COLOURS["Spring"])
         k.stamp()
         k.color("brown")
 
 
 def factorial(num: int) -> int:
     """Calculate the factorial of the given num recursively"""
-    pass
+    if num > 1:
+        return num * factorial(num - 1)
+    else:
+        return 1
+
+
+def fibonacci(num: int) -> int:
+    if num > 2:
+        return fibonacci(num - 1) + fibonacci(num - 2)
+    else:
+        return 1
 
 
 draw_complicated_tree(6, 225)
-
+# print(factorial(3))    #6
+# print(factorial(1))    #1
+# print(factorial(123))  #Some Big Num
+print(fibonacci(8))
 
 wn.exitonclick()
